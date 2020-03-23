@@ -64,7 +64,7 @@ export class AppComponent {
     }
   ]
 
-  public toggleStatus(status: string, index: number): void {
+  public toggleStatus(status: string, index: number): void { // <-- already done
     this.buttons[index].status = (status === 'loading') ? 'success' : 'loading';
   }
 }

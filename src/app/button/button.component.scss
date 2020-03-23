@@ -17,6 +17,7 @@ $gutter: 8px;
     min-height: 50px;
     cursor: pointer;
     animation: fade-in 250ms ease-in-out 0ms 1 forwards;
+    outline-color: darken($alt-color, 5);
 
     > .icon, > .text {
       animation: fade-in 500ms ease-in-out 0ms 1 forwards;
