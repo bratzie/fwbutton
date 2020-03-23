@@ -5,17 +5,20 @@ interface Button {
   icon: {
     path: string; // icon name in the assets/icons folder
     position: string; // specify side of icon, values: left, right or both
-  }
+  },
+  status: string; // status determining wether to show spinner or not, values: initial, loading or success
 }
 
 @Component({
   selector: 'app-root',
   template: `
     <app-button
-      *ngFor="let button of buttons"
+      *ngFor="let button of buttons; let i = index"
       [buttonText]="button.text"
       [iconPath]="button.icon.path"
-      [iconPosition]="button.icon.position">
+      [iconPosition]="button.icon.position"
+      [status]="button.status"
+      (buttonClick)="toggleStatus($event, i)">
     </app-button>
   `,
   styles: [`
@@ -37,20 +40,27 @@ export class AppComponent {
         path: 'icon-home.svg',
         position: 'left'
       },
+      status: 'loading'
     },
     {
       text: 'Settings',
       icon: {
         path: 'icon-cog.svg',
         position: 'both'
-      }
+      },
+      status: 'success'
     },
     {
       text: 'Printer',
       icon: {
         path: 'icon-printer.svg',
         position: 'right'
-      }
+      },
+      status: 'initial'
     }
   ]
+
+  public toggleStatus(status: string, index: number): void {
+    this.buttons[index].status = (status === 'loading') ? 'success' : 'loading';
+  }
 }
