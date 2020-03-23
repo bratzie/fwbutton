@@ -1,8 +1,14 @@
 <button class="findwise-button" (click)="handleOnClick()">
-  <ng-container *ngIf="status !== 'loading'; else spinner">
-    <img class="icon left" *ngIf="position.left || position.both" [src]="'assets/icons/' + iconPath">
+  <ng-container *ngIf="status !== 'loading' || iconSpinner; else spinner">
+    <ng-container *ngIf="position.left || position.both">
+      <img *ngIf="!iconSpinner || (iconSpinner && status !== 'loading')" class="icon left" [src]="'assets/icons/' + iconPath">
+      <div *ngIf="iconSpinner && status === 'loading'" class="spinner inline"></div>
+    </ng-container>
     <span class="text">{{buttonText}}</span>
-    <img class="icon right" *ngIf="position.right || position.both" [src]="'assets/icons/' + iconPath">
+    <ng-container *ngIf="position.right || position.both">
+      <img *ngIf="!iconSpinner || (iconSpinner && status !== 'loading')" class="icon right" [src]="'assets/icons/' + iconPath">
+      <div *ngIf="iconSpinner && status === 'loading'" class="spinner inline"></div>
+    </ng-container>
   </ng-container>
   <ng-template #spinner>
     <div class="spinner"></div>

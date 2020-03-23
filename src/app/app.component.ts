@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 interface Button {
   text: string; // text to display on the button
   icon: {
+    spinner?: boolean; // whether to replace the icon with a spinner
     path: string; // icon name in the assets/icons folder
     position: string; // specify side of icon, values: left, right or both
   },
@@ -15,6 +16,7 @@ interface Button {
     <app-button
       *ngFor="let button of buttons; let i = index"
       [buttonText]="button.text"
+      [iconSpinner]="button.icon.spinner"
       [iconPath]="button.icon.path"
       [iconPosition]="button.icon.position"
       [status]="button.status"
@@ -45,6 +47,7 @@ export class AppComponent {
     {
       text: 'Settings',
       icon: {
+        spinner: true,
         path: 'icon-cog.svg',
         position: 'both'
       },
@@ -53,6 +56,7 @@ export class AppComponent {
     {
       text: 'Printer',
       icon: {
+        spinner: true,
         path: 'icon-printer.svg',
         position: 'right'
       },
