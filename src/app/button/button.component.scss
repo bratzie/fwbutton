@@ -1,0 +1,26 @@
+$main-color: #DBC694;
+$alt-color: #D18375;
+$gutter: 8px;
+
+:host {
+  .findwise-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-appearance: none;
+    padding: $gutter;
+    border-radius: 4px;
+    font-size: 1.4em;
+    border: none;
+    box-shadow: 0 2px 0 $alt-color;
+    cursor: pointer;
+
+    > .icon {
+      margin-right: $gutter;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: $gutter;
+  }
+}

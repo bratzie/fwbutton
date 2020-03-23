@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-button *ngFor="let button of buttons" [buttonText]="button.text"></app-button>
+    <app-button
+      *ngFor="let button of buttons"
+      [buttonText]="button.text"
+      [iconPath]="button.icon">
+    </app-button>
   `,
   styles: [`
     :host {
@@ -19,10 +23,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   buttons = [
     {
-      text: 'Button 1'
+      text: 'Home',
+      icon: 'icon-home.svg'
     },
     {
-      text: 'Button 2'
+      text: 'Settings',
+      icon: 'icon-cog.svg'
     }
   ]
 }
