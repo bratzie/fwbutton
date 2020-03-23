@@ -8,7 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ButtonComponent implements OnInit {
   @Input() buttonText: string;
   @Input() iconPath: string;
+  @Input() iconPosition: string;
+
+  position = {
+    left: false,
+    right: false,
+    both: false
+  }
   
   constructor() { }
-  ngOnInit() { }
+
+  ngOnInit() {
+    this.position[this.iconPosition] = true;
+  }
 }

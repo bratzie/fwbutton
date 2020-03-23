@@ -16,7 +16,13 @@ $gutter: 8px;
     cursor: pointer;
 
     > .icon {
-      margin-right: $gutter;
+      &.left {
+        margin-right: $gutter;
+      }
+
+      &.right {
+        margin-left: $gutter;
+      }
     }
   }
 

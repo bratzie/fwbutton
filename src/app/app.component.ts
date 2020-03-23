@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 
+interface Button {
+  text: string; // text to display on the button
+  icon: {
+    path: string; // icon name in the assets/icons folder
+    position: string; // specify side of icon, values: left, right or both
+  }
+}
+
 @Component({
   selector: 'app-root',
   template: `
     <app-button
       *ngFor="let button of buttons"
       [buttonText]="button.text"
-      [iconPath]="button.icon">
+      [iconPath]="button.icon.path"
+      [iconPosition]="button.icon.position">
     </app-button>
   `,
   styles: [`
@@ -21,14 +30,27 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  buttons = [
+  buttons: Button[] = [
     {
       text: 'Home',
-      icon: 'icon-home.svg'
+      icon: {
+        path: 'icon-home.svg',
+        position: 'left'
+      },
     },
     {
       text: 'Settings',
-      icon: 'icon-cog.svg'
+      icon: {
+        path: 'icon-cog.svg',
+        position: 'both'
+      }
+    },
+    {
+      text: 'Printer',
+      icon: {
+        path: 'icon-printer.svg',
+        position: 'right'
+      }
     }
   ]
 }

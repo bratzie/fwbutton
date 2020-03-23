@@ -1,4 +1,5 @@
 <button class="findwise-button">
-  <img class="icon" [src]="'assets/icons/' + iconPath">
+  <img class="icon left" *ngIf="position.left || position.both" [src]="'assets/icons/' + iconPath">
   <span class="text">{{buttonText}}</span>
+  <img class="icon right" *ngIf="position.right || position.both" [src]="'assets/icons/' + iconPath">
 </button>
